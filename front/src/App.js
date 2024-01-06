@@ -25,18 +25,15 @@ const App = () => {
   useEffect(() => {
     // Formatiranje podataka za grafikon samo ako postoje podaci
     if (data.length > 0) {
-      const chartLabels = data.map((entry) => {
-        const date = new Date(entry.dt * 1000);
-        return date.toLocaleDateString('en-GB'); // Formatiraj datum u "dd/MM/yy"
-      });
+      const chartLabels = data.map((_, index) => (index + 1).toString()); // Indeks + 1 kao labela
 
-      const chartTemperatureData = data.map((entry) => entry.main.temp+ Math.random()*2);
+      const chartTemperatureData = data.map((entry) => entry.average_temperature + Math.random()*5);
 
       setChartData({
         labels: chartLabels,
         datasets: [
           {
-            label: 'Temperatura',
+            label: 'Average temperature',
             data: chartTemperatureData,
             fill: false,
             borderColor: 'rgba(75,192,192,1)',

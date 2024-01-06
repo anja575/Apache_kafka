@@ -1,8 +1,5 @@
-import json  
-
-import requests  
-
 from kafka import KafkaProducer  
+import requests, json
 
 # Initialize Kafka producer  
 
